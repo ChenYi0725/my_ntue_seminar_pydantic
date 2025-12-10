@@ -8,7 +8,7 @@ class User(pydantic.BaseModel):
     email: pydantic.EmailStr
     password: str
     confirm_password: str
-    full_name: str | None = None
+    nick_name: str | None = None
     # ------
 
     @pydantic.field_validator("age")
@@ -32,8 +32,8 @@ class User(pydantic.BaseModel):
         if self.password != self.confirm_password:
             raise ValueError("password and confirm_password must be the same")
 
-        if self.full_name is None:
-            self.full_name = self.name.title()  
+        if self.nick_name is None:
+            self.nick_name = self.name.title()
 
         return self
 

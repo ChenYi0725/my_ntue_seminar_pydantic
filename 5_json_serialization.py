@@ -7,24 +7,27 @@ class User(pydantic.BaseModel):
     email: pydantic.EmailStr
 
 
-user1 = User(name="Alice", age=25, email="alice@gmail.com")
+# ============================================
+user1 = User(name="Eason", age=22, email="eason@gmail.com")
 user1_dict = user1.model_dump()
 user1_json = user1.model_dump_json()
+print()
 print("Origin: ", user1)
 print("Serialized Dict:", user1_dict)
 print("Serialized JSON:", user1_json)
-
+print()
 
 # ============================================
-json_string = '{"name":"Bob","age":25,"email":"bob@gmail.com"}'
+json_string = '{"name":"Yi-Tong","age":23,"email":"yitong@gmail.com"}'
 user2 = User.model_validate_json(json_string)
-print("Deserialized from JSON:", user2)
-
-
+print(user2)
+print()
+# ============================================
 user3_info = {
-    "name": "Charlie",
-    "age": 30,
-    "email": "charlie@gmail.com",
-}  # 丟去json serialization.py
+    "name": "Chi-yu",
+    "age": 22,
+    "email": "chiyu@gmail.com",
+}
 user3 = User(**user3_info)
 print(user3)
+print()
